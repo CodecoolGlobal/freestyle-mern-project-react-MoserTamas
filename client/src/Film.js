@@ -1,10 +1,14 @@
 import React from 'react'
 
 function Film(props) {
-    console.log(props);
+    //console.log(props);
   return (
-    <div>
-      {props.title}
+    <div className='movie'>
+        Title: {props.title}
+        Year of release: {props.year}
+        Type: {props.type}
+
+        <img src={props.poster} alt="poster"/>
     </div>
   )
 }
