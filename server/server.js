@@ -16,41 +16,41 @@ app.use(cors());
 // });
 
 app.post("/favourites", (req, res) => {
-  res.json({ message: "halllóóóóó" });
+  // res.json({ "message": "halllóóóóó" });
   //   console.log(req.body);
-  //   const film = req.body;
-  //   const title = film.Title;
-  //   const year = film.Year;
-  //   const genre = film.Genre;
-  //   const plot = film.Plot;
-  //   const actors = film.Actors;
-  //   const writers = film.Writer;
-  //   const directors = film.Director;
-  //   const type = film.Type;
-  //   const rating = film.imdbRating;
-  //   const runtime = film.Runtime;
-  //   const poster = film.Poster;
-  //   const movie = new Movie({
-  // title: title,
-  // year: year,
-  // genre: genre,
-  // plot: plot,
-  // actors: actors,
-  // writers: writers,
-  // directors: directors,
-  // type: type,
-  // rating: rating,
-  // runtime: runtime,
-  // poster: poster,
-  //   });
-  //   movie.find().then((movie) => res.json(movie));
-  //   movie
-  //     .save()
-  //     .then((movie) => res.json(movie))
-  //     .catch((err) => {
-  //       console.log(err);
-  //       res.status(400).json({ success: false });
-  //     });
+  const film = req.body;
+  const title = film.Title;
+  const year = film.Year;
+  const genre = film.Genre;
+  const plot = film.Plot;
+  const actors = film.Actors;
+  const writers = film.Writer;
+  const directors = film.Director;
+  const type = film.Type;
+  const rating = film.imdbRating;
+  const runtime = film.Runtime;
+  const poster = film.Poster;
+  const movie = new Movie({
+    title: title,
+    year: year,
+    genre: genre,
+    plot: plot,
+    actors: actors,
+    writers: writers,
+    directors: directors,
+    type: type,
+    rating: rating,
+    runtime: runtime,
+    poster: poster,
+  });
+  // Movie.find().then((movie) => res.json(movie));
+  movie
+    .save()
+    .then((movie) => res.json(movie))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json({ success: false });
+    });
 });
 
 mongoose
