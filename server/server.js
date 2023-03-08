@@ -43,7 +43,6 @@ app.post("/favourites", (req, res) => {
     runtime: runtime,
     poster: poster,
   });
-  // Movie.find().then((movie) => res.json(movie));
   movie
     .save()
     .then((movie) => res.json(movie))
@@ -54,9 +53,7 @@ app.post("/favourites", (req, res) => {
 });
 
 mongoose
-  .connect(
-    "mongodb+srv://tamasmoser:y7BEOx4NjHD58U0M@cluster0.up3zpn0.mongodb.net/test"
-  )
+  .connect()
   .then(() => console.log("Megy vagy nem megy?"))
   .catch((err) => console.log(err));
 
