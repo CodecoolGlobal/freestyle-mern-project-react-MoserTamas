@@ -55,7 +55,7 @@ app.delete("/delete/:id", async (req, res) => {
 
 app.put("/edit/:id", async (req, res) => {
   let id = req.params.id;
-  await Movie.findOneAndUpdate({ _id: id }, { seen: "yes" });
+  await Movie.findOneAndUpdate({ _id: id }, { seen: "Yes" });
   res.status(202).send("updated");
 });
 
