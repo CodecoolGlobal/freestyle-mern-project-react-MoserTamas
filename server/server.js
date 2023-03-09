@@ -16,8 +16,6 @@ app.use(cors());
 // });
 
 app.post("/favourites", (req, res) => {
-  // res.json({ "message": "halllóóóóó" });
-  //   console.log(req.body);
   const film = req.body;
   const title = film.Title;
   const year = film.Year;
@@ -52,8 +50,20 @@ app.post("/favourites", (req, res) => {
     });
 });
 
+app.get("/favourites", async (req, res) => {
+  const filmsOnMyList = await Movie.find();
+  res.status(200).send(filmsOnMyList);
+});
+
+app.delete("/delete/:id", async (req, res) => {
+  let id = req.params.id;
+  await Movie.findOneAndDelete;
+});
+
 mongoose
-  .connect()
+  .connect(
+    "mongodb+srv://tamasmoser:y7BEOx4NjHD58U0M@cluster0.up3zpn0.mongodb.net/test"
+  )
   .then(() => console.log("Megy vagy nem megy?"))
   .catch((err) => console.log(err));
 
