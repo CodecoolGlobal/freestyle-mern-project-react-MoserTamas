@@ -3,20 +3,20 @@ import React from "react";
 export default function Details(props) {
   return (
     <div className="details">
-      Actors: {props.actors}
+      <strong>Actors:</strong> {props.actors}
       <br></br>
-      Director:{props.directors}
+      <strong>Director:</strong> {props.directors}
       <br></br>
-      Genre:{props.genre} <br></br>
-      Plot: {props.plot}
+      <strong>Genre:</strong> {props.genre} <br></br>
+      <strong>Plot:</strong> {props.plot}
       <br></br>
-      Runtime:{props.runtime}
+      <strong>Runtime:</strong> {props.runtime}
       <br></br>
-      Type: {props.type}
+      <strong>Type:</strong> {props.type}
       <br></br>
-      Writer: {props.writers}
+      <strong>Writer:</strong> {props.writers}
       <br></br>
-      imdb rating: {props.rating}
+      <strong>imdb rating:</strong> {props.rating}
       <br></br>
     </div>
   );

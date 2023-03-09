@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Film from "./Film.js";
 import MyList from "./MyList";
 import Details from "./Details";
+import Footer from "./Footer";
 
 function App() {
   const [title, setTitle] = useState("");
@@ -153,6 +154,7 @@ function App() {
 
   return (
     <div className="App">
+      <header>Freestyle MERN TWT's Rainy Day Program Planner</header>
       {scrollTop && (
         <button onClick={bottomToTop} className="backToTop">
           ↑
@@ -205,6 +207,7 @@ function App() {
                 type="text"
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
+                placeholder = "movie title"
               />
             </label>
             <button type="submit">Search!</button>
@@ -253,6 +256,7 @@ function App() {
             ))}
         </>
       )}
+      <Footer />
     </div>
   );
 }
