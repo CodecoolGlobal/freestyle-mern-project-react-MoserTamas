@@ -165,6 +165,7 @@ function App() {
           <button type="button" onClick={handleBackButton}>
             Back
           </button>
+          <hr></hr>
           {myList.map((film, index) => (
             <div key={index}>
               <MyList
@@ -195,6 +196,7 @@ function App() {
               >
                 Watched it
               </button>
+              <hr></hr>
             </div>
           ))}
         </>

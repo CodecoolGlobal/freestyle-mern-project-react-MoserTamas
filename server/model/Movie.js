@@ -15,7 +15,7 @@ const movieSchema = new Schema({
   poster: String,
   seen: {
     type: String,
-    default: "not yet",
+    default: "Not yet",
   },
   createdAt: {
     type: Date,
