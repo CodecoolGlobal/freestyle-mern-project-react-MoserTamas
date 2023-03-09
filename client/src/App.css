@@ -32,7 +32,7 @@ img {
     display: inline
 }
 button {
-  height: 30px;
+  /* height: 30px; */
   background-color: grey;
   color: yellowgreen;
   border-radius: 10px;
@@ -40,7 +40,7 @@ button {
   cursor: pointer;
   margin: 10px;
   display: inline;
-  padding: 0px 10px;
+  padding: 10px 10px;
   font-weight: bold;
 }
 
@@ -53,7 +53,7 @@ button:hover{
 
 .backToTop {
   position: fixed;
-  bottom: 100px;
+  bottom: 20px;
   right: 10px;
   font-size: 80px;
   background: white;
