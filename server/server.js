@@ -61,7 +61,7 @@ app.put("/edit/:id", async (req, res) => {
 
 mongoose
   .connect(
-    "mongodb+srv://tamasmoser:y7BEOx4NjHD58U0M@cluster0.up3zpn0.mongodb.net/test"
+    "mongodb+srv://bence309:200A30f4@cluster0.geemxgt.mongodb.net/test"
   )
   .then(() => console.log("Megy vagy nem megy?"))
   .catch((err) => console.log(err));
