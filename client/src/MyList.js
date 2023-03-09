@@ -3,17 +3,18 @@ import React from "react";
 function MyList(props) {
   return (
     <>
-      <p>{props.title}</p>
-      <p>{props.year}</p>
-      <p>{props.genre}</p>
-      <p>{props.plot}</p>
-      <p>{props.actors}</p>
-      <p>{props.writers}</p>
-      <p>{props.directors}</p>
-      <p>{props.type}</p>
-      <p>{props.rating}</p>
-      <p>{props.runtime}</p>
-      <p>{props.poster}</p>
+      <h1>title: {props.title}</h1>
+      <p>year of release: {props.year}</p>
+      <p>genre: {props.genre}</p>
+      <p>story: {props.plot}</p>
+      <p>actors: {props.actors}</p>
+      <p>writers: {props.writers}</p>
+      <p>directors: {props.directors}</p>
+      <p>type: {props.type}</p>
+      <p>rating: {props.rating}</p>
+      <p>runtime: {props.runtime}</p>
+      <img src={props.poster} alt="poster" />
+      <p>seen: {props.seen}</p>
     </>
   );
 }

@@ -1,1 +1,4 @@
-No starter code is provided. Start from scratch!
+Features:
+
+- Have seen it, how many times?
+- Auto complete

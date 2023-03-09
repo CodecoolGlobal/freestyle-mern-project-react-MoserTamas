@@ -13,6 +13,10 @@ const movieSchema = new Schema({
   rating: String,
   runtime: String,
   poster: String,
+  seen: {
+    type: String,
+    default: "not yet",
+  },
   createdAt: {
     type: Date,
     default: Date.now,

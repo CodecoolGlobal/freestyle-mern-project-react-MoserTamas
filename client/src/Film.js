@@ -1,16 +1,15 @@
-import React from 'react'
+import React from "react";
 
 function Film(props) {
-    //console.log(props);
+  //console.log(props);
   return (
-    <div className='movie'>
-        Title: {props.title}
-        Year of release: {props.year}
-        Type: {props.type}
-
-        <img src={props.poster} alt="poster"/>
+    <div className="movie">
+      <h1>Title: {props.title}</h1>
+      <h2>Year of release: {props.year}</h2>
+      <h2>Type: {props.type}</h2>
+      <img src={props.poster} alt="poster" />
     </div>
-  )
+  );
 }
 
-export default Film
+export default Film;

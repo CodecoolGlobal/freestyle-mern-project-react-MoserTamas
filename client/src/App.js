@@ -1,22 +1,15 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Film from "./Film.js";
 import MyList from "./MyList";
 import Details from "./Details";
-import { Routes, Route, useNavigate, BrowserRouter } from "react-router-dom";
 
 function App() {
-  //const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [movie, setMovie] = useState([]);
   const [details, setDetails] = useState({});
   const [myList, setMyList] = useState([]);
   const [showTheList, setShowTheList] = useState(false);
-
-  const navigateToFavourites = () => {
-    // 👇️ navigate to /favourites
-    // navigate("/favourites");
-  };
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -97,6 +90,27 @@ function App() {
     setShowTheList(false);
   };
 
+  const handleWatchedButton = (event) => {
+    console.log(event.target.dataset.id);
+    let url = "http://localhost:3001/edit/" + event.target.dataset.id;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application.json",
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("successful update");
+        } else {
+          console.log("update failed");
+        }
+        return res;
+      })
+      .then(getMyList)
+      .catch((err) => console.log(err));
+  };
+
   const handleDeleteButton = (event) => {
     console.log(event.target.dataset.id);
     let url = "http://localhost:3001/delete/" + event.target.dataset.id;
@@ -118,8 +132,32 @@ function App() {
       .catch((err) => console.log(err));
   };
 
+  const [scrollTop, setScrollTop] = useState(false);
+  // görgetésre aktiválódjon
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        setScrollTop(true);
+      } else {
+        setScrollTop(false);
+      }
+    });
+  }, []);
+
+  const bottomToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="App">
+      {scrollTop && (
+        <button onClick={bottomToTop} className="backToTop">
+          ↑
+        </button>
+      )}
       {showTheList ? (
         <>
           <button type="button" onClick={handleBackButton}>
@@ -139,6 +177,7 @@ function App() {
                 rating={film.rating}
                 runtime={film.runtime}
                 poster={film.poster}
+                seen={film.seen}
               />{" "}
               <button
                 type="button"
@@ -146,6 +185,13 @@ function App() {
                 data-id={film._id}
               >
                 Delete
+              </button>
+              <button
+                type="button"
+                onClick={handleWatchedButton}
+                data-id={film._id}
+              >
+                Watched it
               </button>
             </div>
           ))}
@@ -162,10 +208,10 @@ function App() {
               />
             </label>
             <button type="submit">Search!</button>
+            <button type="button" onClick={handleShowButton}>
+              Show my wish list
+            </button>
           </form>
-          <button type="button" onClick={handleShowButton}>
-            Show my wish list
-          </button>
           <hr></hr>
           {movie &&
             movie.map((film, index) => (
