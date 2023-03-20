@@ -32,7 +32,7 @@ function App() {
     //add to the Mongo DB collection
     // console.log("We have to do something with this stuff");
     // console.log(details);
-    fetch("http://localhost:3001/favourites", {
+    fetch("http://localhost:3002/favourites", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(details),
@@ -76,7 +76,7 @@ function App() {
   };
 
   const getMyList = () => {
-    fetch("http://localhost:3001/favourites")
+    fetch("http://localhost:3002/favourites")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -93,7 +93,7 @@ function App() {
 
   const handleWatchedButton = (event) => {
     console.log(event.target.dataset.id);
-    let url = "http://localhost:3001/edit/" + event.target.dataset.id;
+    let url = "http://localhost:3002/edit/" + event.target.dataset.id;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -114,7 +114,7 @@ function App() {
 
   const handleDeleteButton = (event) => {
     console.log(event.target.dataset.id);
-    let url = "http://localhost:3001/delete/" + event.target.dataset.id;
+    let url = "http://localhost:3002/delete/" + event.target.dataset.id;
     fetch(url, {
       method: "DELETE",
       headers: {

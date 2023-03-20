@@ -1,11 +1,19 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 let Movie = require("./model/Movie.js");
 const cors = require("cors");
-
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+const { MONGO_URL, PORT = 3002 } = process.env;
+
+if (!MONGO_URL) {
+  console.error("Missing MONGO_URL environment variable");
+  process.exit(1);
+}
+
 
 app.post("/favourites", (req, res) => {
   const film = req.body;
@@ -61,9 +69,9 @@ app.put("/edit/:id", async (req, res) => {
 
 mongoose
   .connect(
-    "mongodb+srv://bence309:xxxxx@cluster0.geemxgt.mongodb.net/test"
+    MONGO_URL
   )
   .then(() => console.log("Megy vagy nem megy?"))
   .catch((err) => console.log(err));
 
-app.listen(3001, () => console.log("Server runs on port 3001"));
+app.listen(PORT, () => console.log("Server runs on port 3002"));
